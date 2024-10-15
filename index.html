@@ -315,19 +315,6 @@ dependencies {
     lightbendFortifyPlugin group: &#39;com.lightbend&#39;, name: &quot;scala-fortify_$scalaVersion&quot;, version: fortifyPluginVersion
 }
 
-repositories {
-    jcenter()
-    maven {
-        name &quot;lightbend-maven-releases&quot;
-        url &quot;https://repo.lightbend.com/lightbend/maven-release&quot;
-    }
-    ivy {
-        name &quot;lightbend-ivy-release&quot;
-        url &quot;https://repo.lightbend.com/lightbend/ivy-releases&quot;
-        layout &quot;ivy&quot;
-    }
-}
-
 tasks.withType(ScalaCompile) {
     scalaCompileOptions.additionalParameters = [
             &quot;-Xplugin:&quot; + configurations.lightbendFortifyPlugin.asPath,
