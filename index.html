@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+<title>Fortify SCA for Scala</title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content='scala-fortify-docs'/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:100normal,100italic,300normal,300italic,400normal,400italic,500normal,500italic,700normal,700italic,900normal,900italicc" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="lib/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="js/page.js"></script>
+<script type="text/javascript" src="js/warnOldVersion.js"></script>
+<script type="text/javascript" src="js/groups.js"></script>
+<link rel="stylesheet" type="text/css" href="lib/normalize.css/normalize.css"/>
+<link rel="stylesheet" type="text/css" href="lib/foundation/dist/foundation.min.css"/>
+<link rel="stylesheet" type="text/css" href="css/page.css"/>
+
+<!--
+<link rel="shortcut icon" href="images/favicon.ico" />
+-->
+</head>
+
+<body>
+<div class="off-canvas-wrapper">
+<div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+
+<div class="off-canvas position-left" id="off-canvas-menu" data-off-canvas>
+<nav class="off-canvas-nav">
+<div class="nav-home">
+<a href="index.html" class="active">
+<span class="home-icon">⌂</span>Fortify SCA for Scala
+</a>
+<div class="version-number">
+1.1.3
+</div>
+</div>
+<div class="nav-toc">
+<ul>
+</ul>
+</div>
+
+</nav>
+</div>
+
+<div class="off-canvas-content" data-off-canvas-content>
+
+<header class="site-header expanded row">
+<div class="small-12 column">
+<a href="#" class="off-canvas-toggle hide-for-medium" data-toggle="off-canvas-menu"><svg class="svg-icon svg-icon-menu" version="1.1" id="Menu" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve"> <path class="svg-icon-menu-path" fill="#53CDEC" d="M16.4,9H3.6C3.048,9,3,9.447,3,10c0,0.553,0.048,1,0.6,1H16.4c0.552,0,0.6-0.447,0.6-1C17,9.447,16.952,9,16.4,9z M16.4,13
+H3.6C3.048,13,3,13.447,3,14c0,0.553,0.048,1,0.6,1H16.4c0.552,0,0.6-0.447,0.6-1C17,13.447,16.952,13,16.4,13z M3.6,7H16.4
+C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.048,7,3.6,7z"/></svg>
+</a>
+<div class="title"><a href="index.html" class="active">Fortify SCA for Scala</a></div>
+
+<!--
+<a href="https://www.example.com" class="logo show-for-medium">logo</a>
+-->
+</div>
+</header>
+
+<div class="expanded row">
+
+<div class="medium-3 large-2 show-for-medium column">
+<nav class="site-nav">
+<div class="nav-home">
+<a href="index.html" class="active">
+<span class="home-icon">⌂</span>Fortify SCA for Scala
+</a>
+<div class="version-number">
+1.1.3
+</div>
+</div>
+<div class="nav-toc">
+<ul>
+</ul>
+</div>
+
+</nav>
+</div>
+
+<div class="small-12 medium-9 large-10 column">
+<section class="site-content">
+
+<span id="version-warning"></span>
+
+<div class="page-header row">
+<div class="medium-12 show-for-medium column">
+</div>
+</div>
+
+<div class="page-content row">
+<div class="small-12 large-9 column" id="docs">
+<h1><a href="#fortify-sca-for-scala" name="fortify-sca-for-scala" class="anchor"><span class="anchor-link"></span></a>Fortify SCA for Scala</h1>
+<p>Fortify SCA (Static Code Analyzer), by OpenText, finds security issues in source code. For an overview, <a href="https://www.opentext.com/products/fortify-static-code-analyzer">visit opentext.com</a>.</p>
+<p>Fortify supports many programming languages. This page documents its support for Scala in particular.</p>
+<p>Scala support in Fortify is the product of a collaboration between OpenText and Lightbend.</p>
+<h2><a href="#supported-language-features" name="supported-language-features" class="anchor"><span class="anchor-link"></span></a>Supported language features</h2>
+<p>All of Scala 3 and Scala 2 are supported by the translator.</p>
+<h2><a href="#supported-security-vulnerabilities" name="supported-security-vulnerabilities" class="anchor"><span class="anchor-link"></span></a>Supported security vulnerabilities</h2>
+<p>A <a href="https://vulncat.fortify.com/en/weakness?codelang=Java%2fJSP;Scala">full list</a> is available on the OpenText site.</p>
+<h2><a href="#sample-projects" name="sample-projects" class="anchor"><span class="anchor-link"></span></a>Sample projects</h2>
+<p>The <a href="https://github.com/lightbend-labs/scala-fortify-sample">scala-fortify-sample</a> repository contains a small command line program with a couple of vulnerabilities. It illustrates how to use the translator with the sbt build tool.</p>
+<p>The <a href="https://github.com/playframework/play-webgoat/tree/fortify">play-webgoat</a> repository contains an example web app that uses the Play framework. The <code>fortify</code> branch is configured for use with Fortify SCA. <a href="https://github.com/playframework/play-webgoat/blob/fortify/vulnerabilities-3.x.txt">Here is a list</a> of the vulnerabilities Fortify finds there.</p>
+<p>Similarly, <a href="https://github.com/akka/akka-http-webgoat/tree/fortify">akka-http-webgoat</a> repository contains an example web service that uses Akka-Http. The <code>fortify</code> branch is configured for use with Fortify SCA. <a href="https://github.com/akka/akka-http-webgoat/blob/fortify/vulnerabilities-3.x.txt">Here is a list</a> of the vulnerabilities Fortify finds there.</p>
+<h2><a href="#requirements" name="requirements" class="anchor"><span class="anchor-link"></span></a>Requirements</h2>
+<p>This release supports translating and scanning Scala source code on the following platforms:</p>
+<ul>
+  <li>Linux</li>
+  <li>MacOS</li>
+  <li>Windows</li>
+</ul>
+<p>The following Java Virtual Machine versions are supported:</p>
+<ul>
+  <li>Java 8</li>
+  <li>Java 11</li>
+  <li>Java 17</li>
+  <li>Java 21</li>
+</ul>
+<p>The following Scala versions are supported:</p>
+<ul>
+  <li>Scala 3.3.0 or newer</li>
+  <li>Scala 2.13.8 or newer</li>
+  <li>Scala 2.12.15 or newer</li>
+  <li>Scala 2.11.11 or newer</li>
+</ul>
+<p>The latest patch releases are recommended (3.5.1, 3.4.3, 3.3.3, 2.13.15, 2.12.20, and 2.11.12, as of September 2024).</p>
+<p>To translate Scala code for Fortify to scan, you use the Lightbend compiler plugin, using a license file supplied by OpenText.</p>
+<p>To actually scan translated code for vulnerabilities, you must either:</p>
+<ul>
+  <li>be a licensed Fortify SCA user. Fortify SCA version 23.1.1 or newer  is recommended for best results</li>
+  <li>or, use Fortify on Demand (see below for details)</li>
+</ul>
+<p>Fortify 23.1&rsquo;s own system requirements are <a href="https://www.microfocus.com/documentation/fortify-core-documents/2310/Fortify_Sys_Reqs_23.1.0/index.htm">documented here</a>.</p>
+<h2><a href="#license-installation" name="license-installation" class="anchor"><span class="anchor-link"></span></a>License installation</h2>
+<p>Since Fortify version 22, the license for the translator can be found in the Fortify SCA distribution from OpenText in <code>&lt;Fortify_SCA_Installation_Dir&gt;/plugins/lightbend</code>. (If you are on an older Fortify version, ask OpenText for the license.)</p>
+<p>The license file should look like:</p>
+<pre><code>===== LIGHTBEND ENTERPRISE SUITE LICENSE =====
+
+DO NOT TAMPER WITH THIS FILE - ...
+</code></pre>
+<p>Copy that file to the correct platform-dependent location. On MacOS and Linux platforms the default location is <code>~/.lightbend/license</code> and on the Windows platform it is <code>%homePath%\.lightbend\license</code>.</p>
+<p>You can ask the compiler plugin to look in a different location by specifying <code>-P:fortify:license=...</code>, substituting any full path you like for <code>...</code>.</p>
+<h2><a href="#getting-and-using-the-translator-via-sbt-" name="getting-and-using-the-translator-via-sbt-" class="anchor"><span class="anchor-link"></span></a>Getting and using the translator (via sbt)</h2>
+<p>Prerequisite: install the sbt build tool (<a href="https://www.scala-sbt.org/download.html">link</a>).</p>
+<p>Translating Scala source code for Fortify is done by a Scala compiler plugin. The plugin is available from Maven Central.</p>
+<p>sbt will retrieve and use the plugin if you add the following to your top-level <code>build.sbt</code>:</p>
+<pre class="prettyprint"><code class="language-scala">addCompilerPlugin(
+  &quot;com.lightbend&quot; % &quot;scala-fortify&quot; % &quot;1.1.3&quot;
+    cross CrossVersion.patch)
+scalacOptions += s&quot;-P:fortify:build=myproject&quot;
+</code></pre>
+<p>Note that <code>addCompilerPlugin(...)</code> is just shorthand for <code>libraryDependencies += compilerPlugin(...)</code>. In some contexts, you may need to switch to the latter form.</p>
+<p>You can substitute any build id you like for <code>myproject</code>. Specifying the build id causes translated files to be written to the usual location used by SCA:</p>
+<ul>
+  <li><code>$HOME/.fortify/sca23.1/build/myproject</code> (Linux, MacOS)</li>
+  <li><code>%LOCALAPPDATA%\Fortify\sca23.1\build\myproject</code> (Windows)</li>
+</ul>
+<p>If you prefer to specify the output directory directly, use <code>-P:fortify:out=...</code> instead, filling in a filesystem path for <code>...</code>.</p>
+<p>You may also want to add:</p>
+<pre class="prettyprint"><code class="language-scala">scalacOptions += &quot;-Ystop-before:jvm&quot;
+</code></pre>
+<p>to make compilation stop before any actual JVM classfiles are generated. (You can omit this if you want to let compilation finish.)</p>
+<p>These changes to your build will cause the compiler plugin to run and translated files (with an <code>.nst</code> extension) to be generated whenever your code is compiled (e.g., with the <code>compile</code> task).</p>
+<p>For the scan step, supplying the same build id again (with <code>-b</code>) will allow the scanner to find the translated files. For example:</p>
+<pre><code>sourceanalyzer -b myproject -f myproject.fpr -scan
+</code></pre>
+<h3><a href="#excluding-source-files" name="excluding-source-files" class="anchor"><span class="anchor-link"></span></a>Excluding source files</h3>
+<p>To exclude some source files from translation, add <code>-P:fortify:exclude=...</code> to <code>scalacOptions</code>, replacing <code>...</code> with one or more path specifiers. Specifiers are matched against the absolute paths of the source files.</p>
+<p>Specifiers may use glob syntax such as <code>*</code> and <code>**</code>, for example <code>-P:fortify:exclude=**/test/*.scala</code>. The supported glob syntax is that of Java&rsquo;s <code>PathMatcher</code>, as <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/FileSystem.html#getPathMatcher-java.lang.String-">documented here</a>.</p>
+<p>If you have multiple path specifiers, separate them with colons (Linux, MacOS) or semicolons (Windows). Example: <code>-P:fortify:exclude=**/Foo.scala:**/Bar.scala</code>.</p>
+<h3><a href="#multi-project-builds" name="multi-project-builds" class="anchor"><span class="anchor-link"></span></a>Multi-project builds</h3>
+<p>If your build has subprojects, then you&rsquo;ll need to adapt the above <code>addCompilerPlugin(...)</code> and <code>scalacOptions += ...</code> settings accordingly. (By default, the settings will apply only to your root project.)</p>
+<p>The best way to do this depends on how your build is set up and whether you want to enable Fortify SCA on every subproject, or only some of them.</p>
+<h4><a href="#enabling-fortify-build-wide" name="enabling-fortify-build-wide" class="anchor"><span class="anchor-link"></span></a>Enabling Fortify build-wide</h4>
+<p>If you want to enable Fortify SCA in every subproject and have all of the code scanned together, then add <code>ThisBuild /</code> to the settings. <a href="https://www.scala-sbt.org/1.x/docs/Scopes.html#Build-level+settings">The sbt documentation on build-level settings</a> explains <code>ThisBuild</code>.</p>
+<p>Note that it&rsquo;s normal for multiple subprojects to share the same build id, so that Fortify can follow data flows where code in one subproject calls code in another subproject.</p>
+<p>If you want, the Fortify settings can go a separate <code>.sbt</code> file, for example <code>fortify.sbt</code>.</p>
+<p>This approach is illustrated in the <a href="https://github.com/lightbend-labs/scala-fortify-sample">scala-fortify-sample</a> sample repo.</p>
+<h4><a href="#enabling-fortify-only-for-some-subprojects" name="enabling-fortify-only-for-some-subprojects" class="anchor"><span class="anchor-link"></span></a>Enabling Fortify only for some subprojects</h4>
+<p>In this scenario, instead of using <code>ThisBuild</code>, you will need to use <code>addCompilerPlugin</code> and alter <code>scalacOptions</code> in those subprojects only.</p>
+<p>How to accomplish this may depend on the details of how your build is set up. Regardless, here are some guidelines.</p>
+<p>It is typical to store the <code>addCompilerPlugin</code> and <code>scalacOptions</code> settings in a variable, and then add that variable in each subproject. This technique is documented in <a href="https://www.scala-sbt.org/1.x/docs/Multi-Project.html#Common+settings">the sbt documentation on common settings</a>. The resulting build definition will look something like this:</p>
+<pre class="prettyprint"><code class="language-scala">lazy val fortifySettings = Seq(
+  addCompilerPlugin(...),
+  scalacOptions += ...)
+lazy val project1 = project ... (
+  .settings(fortifySettings,
+    // other settings
+  )
+lazy val project2 = project ... (
+  .settings(fortifySettings,
+    // other settings
+  )
+</code></pre>
+<p>Note that in this type of setup, we don&rsquo;t know of any way to keep everything Fortify-related in a separate <code>fortify.sbt</code> file.</p>
+<h2><a href="#getting-and-using-the-translator-with-maven-" name="getting-and-using-the-translator-with-maven-" class="anchor"><span class="anchor-link"></span></a>Getting and using the translator (with Maven)</h2>
+<p>Translating Scala source code for Fortify is done by a Scala compiler plugin. The plugin is available from Maven Central.</p>
+<p>Here is a sample <code>pom.xml</code> file showing how to use the translator in a Maven build.</p>
+<p>The following example <code>pom.xml</code> adds the <code>scala-maven-plugin</code> and Fortify SCA configuration to the build file:</p>
+<pre><code>    &lt;build&gt;
+        &lt;plugins&gt;
+            &lt;!-- Maven Build Plugins --&gt;
+            ...
+            &lt;plugin&gt;
+                &lt;groupId&gt;net.alchim31.maven&lt;/groupId&gt;
+                &lt;artifactId&gt;scala-maven-plugin&lt;/artifactId&gt;
+                &lt;version&gt;4.3.0&lt;/version&gt;
+                &lt;executions&gt;
+                    &lt;execution&gt;
+                        &lt;goals&gt;
+                            &lt;-- Compilation of main sources, test code is irrelevant --&gt;
+                            &lt;goal&gt;compile&lt;/goal&gt;
+                        &lt;/goals&gt;
+                    &lt;/execution&gt;
+                &lt;/executions&gt;
+                &lt;configuration&gt;
+                    &lt;args&gt;
+                        &lt;arg&gt;-P:fortify:build=&lt;PROJECT_NAME&gt;&lt;/arg&gt;
+                        &lt;arg&gt;-P:fortify:scaversion=23.1&lt;/arg&gt;
+                    &lt;/args&gt;
+                    &lt;compilerPlugins&gt;
+                        &lt;compilerPlugin&gt;
+                            &lt;groupId&gt;com.lightbend&lt;/groupId&gt;
+                            &lt;artifactId&gt;scala-fortify_3.5.1&lt;/artifactId&gt;
+                            &lt;version&gt;1.1.3&lt;/version&gt;
+                        &lt;/compilerPlugin&gt;
+                    &lt;/compilerPlugins&gt;
+                &lt;/configuration&gt;
+            &lt;/plugin&gt;
+
+        &lt;/plugins&gt;
+    &lt;/build&gt;
+</code></pre>
+<p>As the build progresses, you should notice that the plugin is invoked during the Maven <code>compile</code> goal:</p>
+<pre><code>...
+[INFO] Compiling 365 Scala sources to /&lt;PROJECT_ROOT&gt;/target/classes ...
+scala-fortify 1.1.3, licensed to xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx (expires: 2024-09-10T00:00Z[UTC])
+scala-fortify: writing translated files to /&lt;USER_HOME&gt;/.fortify/sca23.1/build/&lt;PROJECT_NAME&gt;
+...
+</code></pre>
+<h2><a href="#getting-and-using-the-translator-with-gradle-" name="getting-and-using-the-translator-with-gradle-" class="anchor"><span class="anchor-link"></span></a>Getting and using the translator (with Gradle)</h2>
+<p>Translating Scala source code for Fortify is done by a Scala compiler plugin. The plugin is available from Maven Central.</p>
+<p>Here is a sample <code>build.gradle</code> file showing how to use the translator in a <a href="https://gradle.org/">Gradle</a> build.</p>
+<p>Sample <code>build.gradle</code>:</p>
+<pre class="prettyprint"><code class="language-groovy">apply plugin: &#39;scala&#39;
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+ext {
+    scalaBinaryVersion = &#39;3&#39;
+    scalaVersion = &#39;3.5.1&#39;
+    fortifyPluginVersion = &#39;1.1.3&#39;
+}
+
+configurations {
+    lightbendFortifyPlugin
+}
+
+dependencies {
+    compile(&quot;org.scala-lang:scala-library:$scalaVersion&quot;) // specify Scala version
+    lightbendFortifyPlugin group: &#39;com.lightbend&#39;, name: &quot;scala-fortify_$scalaVersion&quot;, version: fortifyPluginVersion
+}
+
+tasks.withType(ScalaCompile) {
+  scalaCompileOptions.additionalParameters = [
+    &quot;-Xplugin:&quot; + configurations.lightbendFortifyPlugin.asPath,
+    &quot;-Xplugin-require:fortify&quot;,
+    &quot;-P:fortify:build=myproject&quot;
+  ]
+}
+</code></pre>
+<h3><a href="#when-using-with-play-framework" name="when-using-with-play-framework" class="anchor"><span class="anchor-link"></span></a>When using with Play Framework</h3>
+<p>Gradle also has <a href="https://docs.gradle.org/current/userguide/play_plugin.html">support for Play Framework</a> and you mix both Fortify and Play configuration in your project, for example:</p>
+<pre class="prettyprint"><code class="language-groovy">plugins {
+    id &#39;play&#39;
+    id &#39;scala&#39;
+}
+
+ext {
+    playVersion = &#39;2.8.8&#39;
+    scalaVersion = &#39;3.5.1&#39;
+    scalaBinaryVersion = &#39;3&#39;
+    fortifyPluginVersion = &#39;1.1.3&#39;
+}
+
+model {
+    components {
+        play {
+            platform play: playVersion, scala: scalaBinaryVersion, java: &#39;1.8&#39;
+            injectedRoutesGenerator = true
+
+            sources {
+                twirlTemplates {
+                    defaultImports = TwirlImports.SCALA
+                }
+            }
+        }
+    }
+}
+
+configurations {
+    lightbendFortifyPlugin
+}
+
+dependencies {
+    // Example of play dependencies
+    play &quot;com.typesafe.play:play-guice_$scalaBinaryVersion:$playVersion&quot;
+    play &quot;com.typesafe.play:play-ahc-ws_$scalaBinaryVersion:$playVersion&quot;
+    play &quot;com.typesafe.play:play-logback_$scalaBinaryVersion:$playVersion&quot;
+    play &quot;com.typesafe.play:filters-helpers_$scalaBinaryVersion:$playVersion&quot;
+
+    lightbendFortifyPlugin group: &#39;com.lightbend&#39;, name: &quot;scala-fortify_$scalaVersion&quot;, version: fortifyPluginVersion
+}
+
+repositories {
+    jcenter()
+    maven {
+        name &quot;lightbend-maven-releases&quot;
+        url &quot;https://repo.lightbend.com/lightbend/maven-release&quot;
+    }
+    ivy {
+        name &quot;lightbend-ivy-release&quot;
+        url &quot;https://repo.lightbend.com/lightbend/ivy-releases&quot;
+        layout &quot;ivy&quot;
+    }
+}
+
+tasks.withType(ScalaCompile) {
+    scalaCompileOptions.additionalParameters = [
+            &quot;-Xplugin:&quot; + configurations.lightbendFortifyPlugin.asPath,
+            &quot;-Xplugin-require:fortify&quot;,
+            &quot;-P:fortify:build=myproject&quot;
+    ]
+}
+</code></pre>
+<h2><a href="#getting-and-using-the-translator-manually-" name="getting-and-using-the-translator-manually-" class="anchor"><span class="anchor-link"></span></a>Getting and using the translator (manually)</h2>
+<p>Prerequisite: install your specific desired version of the Scala compiler. All versions, current and past, are available at <a href="https://www.scala-lang.org/download/all.html">link</a>.</p>
+<p>In the following instructions, substitute the actual full Scala 3.x or 2.13.x or 2.12.x or 2.11.x version you are using; we use 3.5.1 as the example version.</p>
+<p>You can download the compiler plugin JAR from Maven Central from the following URL:</p>
+<pre><code>https://repo1.maven.org/maven2/com/lightbend/scala-fortify_3.5.1/1.1.3/scala-fortify_3.5.1-1.1.3.jar
+</code></pre>
+<p>Then, supposing you have <code>scala-fortify_3.5.1-1.1.3.jar</code> in your current working directory, you can do e.g.:</p>
+<pre><code>scalac -Xplugin:scala-fortify_3.5.1-1.1.3.jar \
+  -Xplugin-require:fortify \
+  -Ystop-before:jvm \
+  -P:fortify:build=myproject \
+  *.scala
+</code></pre>
+<p>Substituting your own build id for <code>myproject</code>. (Or, use the <code>-P:fortify:out=...</code> to specify the output directory directly.)</p>
+<p>When build id support is enabled, it is currently assumed that you are running a version of Fortify SCA in the 23.1 series, so that translated files are written to <code>~/.fortify/sca23.1</code> (Linux, MacOS) or <code>%LOCALAPPDATA%\Fortify\sca23.1</code> (Windows). If you are using some other version of Fortify SCA, for example some version in the 17.2 series, add e.g.:</p>
+<pre><code>-P:fortify:scaversion=17.2
+</code></pre>
+<p>Including <code>-Ystop-before:jvm</code>, as shown above, makes compilation stop before any actual JVM classfiles are generated. You can also omit it if you want to let compilation finish.</p>
+<p>For the scan step, supplying the build id again will allow the scanner to find the translated files. For example:</p>
+<pre><code>sourceanalyzer -b myproject -f myproject.fpr -scan
+</code></pre>
+<h2><a href="#using-the-translator-other-build-tools-" name="using-the-translator-other-build-tools-" class="anchor"><span class="anchor-link"></span></a>Using the translator (other build tools)</h2>
+<p>If you are using a build tool other than sbt, then:</p>
+<ul>
+  <li>Obtain the compiler plugin JAR using the instructions in the previous section</li>
+  <li>Use whatever your build tool&rsquo;s mechanism is for customizing the  options passed to scalac, and pass the additional options shown in  the previous section.</li>
+</ul>
+<h2><a href="#fortify-on-demand" name="fortify-on-demand" class="anchor"><span class="anchor-link"></span></a>Fortify on Demand</h2>
+<p><a href="https://www.opentext.com/products/fortify-on-demand">OpenText Fortify on Demand</a> supports Scala.</p>
+<p>To submit something to Fortify on Demand, you need to generate a Mobile Build Session (<code>.mbs</code>) file. After translating your Scala code with <code>-P:fortify:build=...</code> enabled, you run <code>sourceanalyzer -b &lt;build-id&gt; -export-build-session &lt;file.mbs&gt;</code> to generate a session file suitable for upload.</p>
+<p>Please see the Fortify on Demand documentation for more information on preparing Scala applications. To access the documentation, <a href="https://ams.fortify.com/Login">log in</a> to Fortify on Demand, select Documentation from the help menu near the top right corner (or follow <a href="https://ams.fortify.com/Docs/en/index.htm">this link</a>), and search for &ldquo;Preparing Scala Application Files&rdquo; (or follow <a href="https://ams.fortify.com/Docs/en/index.htm#Running_Asmnts/Static/StaticPrep/SP_Scala.htm%3FTocPath%3DRunning%2520Assessments%7CStatic%2520Assessments%7CPreparing%2520Static%2520Assessment%2520Files%7C_____15">this link</a> &ndash; the exact URL may be subject to change).</p>
+<h2><a href="#known-issues" name="known-issues" class="anchor"><span class="anchor-link"></span></a>Known issues</h2>
+<p>To report an issue, please contact OpenText support. (Or, if you are a Lightbend subscriber, you may contact Lightbend if you like.)</p>
+<ul>
+  <li>Mixed Scala and Java codebases require separately translating  the Scala and Java sources. Depending on the dependency structure  of the code, not all issues involving both languages may be found.  (issue 180)</li>
+  <li>Some pattern matches may produce spurious  &ldquo;Dead Code : Expression is Always false&rdquo; reports. (issue 221)</li>
+  <li>Use of <code>do ... while</code> may produce spurious  &ldquo;null dereference&rdquo; reports. (issue 208)</li>
+  <li>When method calls are nested, all issues are reported as occurring  on the line of code containing the outermost call. (issue 204)</li>
+  <li>Not all characters are supported in build ids; <code>-</code> and <code>_</code> work  but other special characters may not. (issue 174)</li>
+  <li>On Scala 2.11, the <code>-Ydelambdafy</code> flag is not supported and results  in &ldquo;unknown code Function&rdquo; errors. Disable this flag when using the  compiler plugin. (issue 215)</li>
+</ul>
+<h2><a href="#release-notes" name="release-notes" class="anchor"><span class="anchor-link"></span></a>Release notes</h2>
+<h3><a href="#1-1-3-september-19-2024-" name="1-1-3-september-19-2024-" class="anchor"><span class="anchor-link"></span></a>1.1.3 (September 19, 2024)</h3>
+<ul>
+  <li>support for Scala 3.5</li>
+  <li>improved support for lambdas inside inner classes and traits in Scala 3 (issue 478)</li>
+</ul>
+<p>available for Scala versions: 3.5.{0-1}, 3.4.{0-3}, 3.3.{0-3}, 2.13.{8-15}, 2.12.{15-20}, 2.11.{11-12}</p>
+<h3><a href="#1-1-1-june-4-2024-" name="1-1-1-june-4-2024-" class="anchor"><span class="anchor-link"></span></a>1.1.1 (June 4, 2024)</h3>
+<ul>
+  <li>support for Scala 3.4</li>
+  <li>recommended version of Fortify SCA is now 24.2 (formerly 23.1);  by default, files are now written to an <code>sca24.2</code> directory  (issue 471)</li>
+</ul>
+<p>available for Scala versions: 3.4.{0-3}, 3.3.{0-3}, 2.13.{8-14}, 2.12.{15-20}, 2.11.{11-12}</p>
+<h3><a href="#1-1-0-may-23-2024-" name="1-1-0-may-23-2024-" class="anchor"><span class="anchor-link"></span></a>1.1.0 (May 23, 2024)</h3>
+<ul>
+  <li>support for Scala 3, minimum version 3.3.0 (issue 308)</li>
+  <li>support for JDK 21 (issue 454)</li>
+  <li>improved support for lambdas (issue 437)</li>
+  <li>improved support for Java <code>enum</code>s</li>
+  <li>avoid false positive &ldquo;Class Does Not Implement Equivalence Method&rdquo; (issue 456)</li>
+</ul>
+<p>available for Scala versions: 3.3.{0-3}, 2.13.{8-14}, 2.12.{15-19}, 2.11.{11-12}</p>
+<h3><a href="#1-0-26-february-21-2024-" name="1-0-26-february-21-2024-" class="anchor"><span class="anchor-link"></span></a>1.0.26 (February 21, 2024)</h3>
+<ul>
+  <li>fix some false positives by always declaring SAM types in the  closure (issues 432, 437)</li>
+</ul>
+<p>available for Scala versions: 2.13.{3-14}, 2.12.{11-19}, 2.11.{11-12}</p>
+<h3><a href="#1-0-25-september-7-2023-" name="1-0-25-september-7-2023-" class="anchor"><span class="anchor-link"></span></a>1.0.25 (September 7, 2023)</h3>
+<ul>
+  <li>minor fixes</li>
+</ul>
+<p>available for Scala versions: 2.13.{3-12}, 2.12.{11-18}, 2.11.{11-12}</p>
+<h3><a href="#1-0-24-july-18-2023-" name="1-0-24-july-18-2023-" class="anchor"><span class="anchor-link"></span></a>1.0.24 (July 18, 2023)</h3>
+<ul>
+  <li>recommended version of Fortify SCA is now 23.1 (formerly 22.1);  by default, files are now written to an <code>sca23.1</code> directory  (issue 414)</li>
+</ul>
+<p>available for Scala versions: 2.13.{3-11}, 2.12.{11-18}, 2.11.{11-12}</p>
+<h3><a href="#1-0-23-july-16-2023-" name="1-0-23-july-16-2023-" class="anchor"><span class="anchor-link"></span></a>1.0.23 (July 16, 2023)</h3>
+<ul>
+  <li>source files can now be excluded from translation using  new option <code>-P:fortify:exclude=...</code> (issue 403)</li>
+</ul>
+<p>available for Scala versions: 2.13.{3-11}, 2.12.{11-18}, 2.11.{11-12}</p>
+<h3><a href="#1-0-22-june-30-2022-" name="1-0-22-june-30-2022-" class="anchor"><span class="anchor-link"></span></a>1.0.22 (June 30, 2022)</h3>
+<ul>
+  <li>recommended version of Fortify SCA is now 22.1 (formerly 21.1);  by default, files are now written to an <code>sca22.1</code> directory  (issue 392)</li>
+</ul>
+<p>available for Scala versions: 2.13.{0-11}, 2.12.{6-8,11-18}, 2.11.{8,11-12}</p>
+<h3><a href="#1-0-21-august-10-2021-" name="1-0-21-august-10-2021-" class="anchor"><span class="anchor-link"></span></a>1.0.21 (August 10, 2021)</h3>
+<ul>
+  <li>the translator is now available from Maven Central; it no  longer requires special credentials to resolve and download  (issue 373)</li>
+  <li>the translator is no longer published with the &ldquo;assembly&rdquo; classifier;  users of previous versions will need to update their dependencies to  omit <code>classifier &quot;assembly&quot;</code> (issue 373)</li>
+</ul>
+<p>available for Scala versions: 2.13.{0-8}, 2.12.{6-8,11-16}, 2.11.{8,11-12}</p>
+<h3><a href="#1-0-20-july-22-2021-" name="1-0-20-july-22-2021-" class="anchor"><span class="anchor-link"></span></a>1.0.20 (July 22, 2021)</h3>
+<ul>
+  <li>recommended version of Fortify SCA is now 21.1.1 (formerly 20.2);  by default, files are now written to an <code>sca21.1</code> directory  (issue 370)</li>
+  <li>Java 17 is now officially supported (issue 346)</li>
+</ul>
+<p>available for Scala versions: 2.13.{0-6}, 2.12.{6-8,11-14}, 2.11.{8,11-12}</p>
+<h3><a href="#1-0-19-march-25-2021-" name="1-0-19-march-25-2021-" class="anchor"><span class="anchor-link"></span></a>1.0.19 (March 25, 2021)</h3>
+<ul>
+  <li>improved handling of <code>==</code> and <code>!=</code> operators, resulting in fewer  &ldquo;null dereference&rdquo; false positives, fewer &ldquo;dead code&rdquo; false positives  (issues 356, 357, 358)</li>
+</ul>
+<p>available for Scala versions: 2.13.{0-6}, 2.12.{6-8,11-14}, 2.11.{8,11-12}</p>
+<h3><a href="#1-0-18-november-21-2020-" name="1-0-18-november-21-2020-" class="anchor"><span class="anchor-link"></span></a>1.0.18 (November 21, 2020)</h3>
+<ul>
+  <li>recommended version of Fortify SCA is now 20.2 (formerly 20.1);  by default, files are now written to an <code>sca20.2</code> directory  (formerly <code>sca20.1</code>) (issue 350)</li>
+</ul>
+<p>available for Scala versions: 2.13.{0-5}, 2.12.{6-8,11-13}, 2.11.{8,11-12}</p>
+<h3><a href="#1-0-17-august-5-2020-" name="1-0-17-august-5-2020-" class="anchor"><span class="anchor-link"></span></a>1.0.17 (August 5, 2020)</h3>
+<ul>
+  <li>recommended version of Fortify SCA is now 20.1 (formerly 19.2);  by default, files are now written to an <code>sca20.1</code> directory  (formerly <code>sca19.1</code>) (issue 350)</li>
+</ul>
+<p>available for Scala versions: 2.13.{0-4}, 2.12.{6-8,11-12}, 2.11.{8,11-12}</p>
+<h3><a href="#1-0-16-september-12-2019-" name="1-0-16-september-12-2019-" class="anchor"><span class="anchor-link"></span></a>1.0.16 (September 12, 2019)</h3>
+<ul>
+  <li>enabling the plugin no longer requires explicitly declaring  transitive dependencies (issue 279)</li>
+  <li>generated NST files are smaller now (as much as 95% smaller!)  (issue 339)</li>
+  <li>more vulnerabilities are found in a variety of situations  (issues 328, 337, 338)</li>
+  <li>Scala 2.13 support was improved; for best 2.13 support, also  update Fortify to latest security rules (issues 329, 331, 335)</li>
+  <li>Scala 2.12.9 is not supported; please use 2.12.8 or 2.12.10+  instead (issue 340)</li>
+  <li>Java 11 is now officially supported (issue 223)</li>
+</ul>
+<p>available for Scala versions: 2.13.{0-3}, 2.12.{3-8,11-12}, 2.11.{6-8,11-12}</p>
+<h3><a href="#1-0-15-june-21-2019-" name="1-0-15-june-21-2019-" class="anchor"><span class="anchor-link"></span></a>1.0.15 (June 21, 2019)</h3>
+<ul>
+  <li>recommended version of Fortify SCA is now 19.1.0 (formerly 18.20);  by default, files are now written to an <code>sca19.1</code> directory  (formerly <code>sca18.2</code>) (issue 315)</li>
+  <li>add full support for Scala 2.13 (issue 156)</li>
+  <li>when the plugin starts, it now prints the absolute path to the  directory name where translated files are written, to aid with  configuration and troubleshooting (issue 320)</li>
+  <li>character literals containing a backslash escape sequence  are now handled correctly (issue 325)</li>
+</ul>
+<p>available for Scala versions: 2.13.0, 2.12.{3-8}, 2.11.{6-8,11-12}</p>
+<h3><a href="#1-0-13-december-2-2018-" name="1-0-13-december-2-2018-" class="anchor"><span class="anchor-link"></span></a>1.0.13 (December 2, 2018)</h3>
+<ul>
+  <li>recommended version of Fortify SCA is now 18.20 (formerly 18.10);  by default, files are now written to an <code>sca18.2</code> directory  (formerly <code>sca18.1</code>) (issue 310)</li>
+</ul>
+<p>available for Scala versions: 2.11.{6-8,11-12}, 2.12.{3-8}</p>
+<h3><a href="#1-0-12-october-2-2018-" name="1-0-12-october-2-2018-" class="anchor"><span class="anchor-link"></span></a>1.0.12 (October 2, 2018)</h3>
+<ul>
+  <li>improved tracking of data flow through trait methods (issue 297)</li>
+  <li>improved tracking of data flow across multiple source files (issue 302)</li>
+  <li>improved accuracy of line number information in reported vulnerabilities  (issue 301)</li>
+</ul>
+<p>available for Scala versions: 2.11.{6-8,11-12}, 2.12.{3-8}</p>
+<h3><a href="#1-0-10-june-12-2018-" name="1-0-10-june-12-2018-" class="anchor"><span class="anchor-link"></span></a>1.0.10 (June 12, 2018)</h3>
+<ul>
+  <li>support class literals with type parameters (issue 294)</li>
+</ul>
+<h3><a href="#1-0-9-april-30-2018-" name="1-0-9-april-30-2018-" class="anchor"><span class="anchor-link"></span></a>1.0.9 (April 30, 2018)</h3>
+<ul>
+  <li>recommended version of Fortify SCA is now 18.10 (formerly 17.20).</li>
+  <li>by default, files are now written to an <code>sca18.1</code> directory  (formerly <code>sca17.2</code>)</li>
+  <li>vulnerabilities involving Twirl templates are now reported as occurring in the original <code>.html</code> file, not the generated <code>.scala</code> file (issue 159)</li>
+</ul>
+<h3><a href="#1-0-7-march-14-2018-" name="1-0-7-march-14-2018-" class="anchor"><span class="anchor-link"></span></a>1.0.7 (March 14, 2018)</h3>
+<ul>
+  <li>plugin is now published Maven-style, not Ivy-style; as a result,  build configuration instructions have <a href="https://github.com/lightbend/scala-fortify-docs/commit/d70499f7b2aad4df6fcc868941917e64f51df35b">changed</a> (issue 277)</li>
+  <li>emit fewer &ldquo;Value Never Read&rdquo; false positives (issue 258 (partial fix))</li>
+</ul>
+<h3><a href="#1-0-5-february-7-2018-" name="1-0-5-february-7-2018-" class="anchor"><span class="anchor-link"></span></a>1.0.5 (February 7, 2018)</h3>
+<ul>
+  <li>handle source files with any character encoding (issue 267)</li>
+  <li>Scala 2.11.6 and 2.11.7 are now supported (issue 217)</li>
+</ul>
+<h3><a href="#1-0-2-january-11-2018-" name="1-0-2-january-11-2018-" class="anchor"><span class="anchor-link"></span></a>1.0.2 (January 11, 2018)</h3>
+<ul>
+  <li>the location of the Lightbend license file is now configurable with  <code>-P:fortify:license=...</code> (issue 263)</li>
+</ul>
+<h3><a href="#1-0-1-december-20-2017-" name="1-0-1-december-20-2017-" class="anchor"><span class="anchor-link"></span></a>1.0.1 (December 20, 2017)</h3>
+<ul>
+  <li>enabling the plugin no longer interferes with Scaladoc generation  (issue 260)</li>
+</ul>
+<h3><a href="#1-0-0-december-6-2017-" name="1-0-0-december-6-2017-" class="anchor"><span class="anchor-link"></span></a>1.0.0 (December 6, 2017)</h3>
+<ul>
+  <li>first general release</li>
+</ul>
+</div>
+<div class="large-3 show-for-large column" data-sticky-container>
+<nav class="sidebar sticky" data-sticky data-anchor="docs" data-sticky-on="large">
+<div class="page-nav">
+<div class="nav-title">On this page:</div>
+<div class="nav-toc">
+<ul>
+  <li><a href="index.html#fortify-sca-for-scala" class="header">Fortify SCA for Scala</a>
+  <ul>
+    <li><a href="index.html#supported-language-features" class="header">Supported language features</a></li>
+    <li><a href="index.html#supported-security-vulnerabilities" class="header">Supported security vulnerabilities</a></li>
+    <li><a href="index.html#sample-projects" class="header">Sample projects</a></li>
+    <li><a href="index.html#requirements" class="header">Requirements</a></li>
+    <li><a href="index.html#license-installation" class="header">License installation</a></li>
+    <li><a href="index.html#getting-and-using-the-translator-via-sbt-" class="header">Getting and using the translator (via sbt)</a></li>
+    <li><a href="index.html#getting-and-using-the-translator-with-maven-" class="header">Getting and using the translator (with Maven)</a></li>
+    <li><a href="index.html#getting-and-using-the-translator-with-gradle-" class="header">Getting and using the translator (with Gradle)</a></li>
+    <li><a href="index.html#getting-and-using-the-translator-manually-" class="header">Getting and using the translator (manually)</a></li>
+    <li><a href="index.html#using-the-translator-other-build-tools-" class="header">Using the translator (other build tools)</a></li>
+    <li><a href="index.html#fortify-on-demand" class="header">Fortify on Demand</a></li>
+    <li><a href="index.html#known-issues" class="header">Known issues</a></li>
+    <li><a href="index.html#release-notes" class="header">Release notes</a></li>
+  </ul></li>
+</ul>
+</div>
+</div>
+</nav>
+</div>
+</div>
+
+</section>
+</div>
+
+</div>
+
+<footer class="site-footer">
+
+<section class="site-footer-nav">
+<div class="expanded row">
+<div class="small-12 large-offset-2 large-10 column">
+<div class="row site-footer-content">
+
+<div class="small-12 medium-4 large-3 text-center column">
+<div class="nav-links">
+<ul>
+<!-- <li><a href="https://www.example.com/products/">Products</a> -->
+</ul>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</section>
+
+<section class="site-footer-base">
+<div class="expanded row">
+<div class="small-12 large-offset-2 large-10 column">
+<div class="row site-footer-content">
+
+<div class="small-12 text-center large-9 column">
+
+<!--
+<div class="copyright">
+<span class="text">&copy; 2024</span>
+<a href="https://www.example.com" class="logo">logo</a>
+</div>
+-->
+</div>
+
+</div>
+</div>
+</div>
+</section>
+</footer>
+
+</div>
+</div>
+</div>
+</body>
+
+<script type="text/javascript" src="lib/foundation/dist/foundation.min.js"></script>
+<script type="text/javascript">jQuery(document).foundation();</script>
+<script type="text/javascript" src="js/magellan.js"></script>
+
+<style type="text/css">@import "lib/prettify/prettify.css";</style>
+<script type="text/javascript" src="lib/prettify/prettify.js"></script>
+<script type="text/javascript" src="lib/prettify/lang-scala.js"></script>
+<script type="text/javascript">jQuery(function(){window.prettyPrint && prettyPrint()});</script>
+<script type="text/javascript">jQuery(function(jq){initOldVersionWarnings(jq, '1.1.3', '')});</script>
+
+
+</html>
