@@ -127,10 +127,10 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <p>To translate Scala code for Fortify to scan, you use the Lightbend compiler plugin, using a license file supplied by OpenText.</p>
 <p>To actually scan translated code for vulnerabilities, you must either:</p>
 <ul>
-  <li>be a licensed Fortify SCA user. Fortify SCA version 23.1.1 or newer  is recommended for best results</li>
+  <li>be a licensed Fortify SCA user. Fortify SCA version 24.2.0 or newer  is recommended for best results</li>
   <li>or, use Fortify on Demand (see below for details)</li>
 </ul>
-<p>Fortify 23.1&rsquo;s own system requirements are <a href="https://www.microfocus.com/documentation/fortify-core-documents/2310/Fortify_Sys_Reqs_23.1.0/index.htm">documented here</a>.</p>
+<p>Fortify&rsquo;s own system requirements are <a href="https://www.microfocus.com/documentation/fortify-core-documents/2420/Fortify_Sys_Reqs_24.2.0/index.htm">here</a>.</p>
 <h2><a href="#license-installation" name="license-installation" class="anchor"><span class="anchor-link"></span></a>License installation</h2>
 <p>Since Fortify version 22, the license for the translator can be found in the Fortify SCA distribution from OpenText in <code>&lt;Fortify_SCA_Installation_Dir&gt;/plugins/lightbend</code>. (If you are on an older Fortify version, ask OpenText for the license.)</p>
 <p>The license file should look like:</p>
@@ -152,8 +152,8 @@ scalacOptions += s&quot;-P:fortify:build=myproject&quot;
 <p>Note that <code>addCompilerPlugin(...)</code> is just shorthand for <code>libraryDependencies += compilerPlugin(...)</code>. In some contexts, you may need to switch to the latter form.</p>
 <p>You can substitute any build id you like for <code>myproject</code>. Specifying the build id causes translated files to be written to the usual location used by SCA:</p>
 <ul>
-  <li><code>$HOME/.fortify/sca23.1/build/myproject</code> (Linux, MacOS)</li>
-  <li><code>%LOCALAPPDATA%\Fortify\sca23.1\build\myproject</code> (Windows)</li>
+  <li><code>$HOME/.fortify/sca24.2/build/myproject</code> (Linux, MacOS)</li>
+  <li><code>%LOCALAPPDATA%\Fortify\sca24.2\build\myproject</code> (Windows)</li>
 </ul>
 <p>If you prefer to specify the output directory directly, use <code>-P:fortify:out=...</code> instead, filling in a filesystem path for <code>...</code>.</p>
 <p>You may also want to add:</p>
@@ -236,7 +236,7 @@ lazy val project2 = project ... (
 <pre><code>...
 [INFO] Compiling 365 Scala sources to /&lt;PROJECT_ROOT&gt;/target/classes ...
 scala-fortify 1.1.4, licensed to xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx (expires: 2024-09-10T00:00Z[UTC])
-scala-fortify: writing translated files to /&lt;USER_HOME&gt;/.fortify/sca23.1/build/&lt;PROJECT_NAME&gt;
+scala-fortify: writing translated files to /&lt;USER_HOME&gt;/.fortify/sca24.2/build/&lt;PROJECT_NAME&gt;
 ...
 </code></pre>
 <h2><a href="#getting-and-using-the-translator-with-gradle-" name="getting-and-using-the-translator-with-gradle-" class="anchor"><span class="anchor-link"></span></a>Getting and using the translator (with Gradle)</h2>
@@ -338,7 +338,7 @@ tasks.withType(ScalaCompile) {
   *.scala
 </code></pre>
 <p>Substituting your own build id for <code>myproject</code>. (Or, use the <code>-P:fortify:out=...</code> to specify the output directory directly.)</p>
-<p>When build id support is enabled, it is currently assumed that you are running a version of Fortify SCA in the 23.1 series, so that translated files are written to <code>~/.fortify/sca23.1</code> (Linux, MacOS) or <code>%LOCALAPPDATA%\Fortify\sca23.1</code> (Windows). If you are using some other version of Fortify SCA, for example some version in the 17.2 series, add e.g.:</p>
+<p>When build id support is enabled, it is currently assumed that you are running a version of Fortify SCA in the 24.2 series, so that translated files are written to <code>~/.fortify/sca24.2</code> (Linux, MacOS) or <code>%LOCALAPPDATA%\Fortify\sca24.2</code> (Windows). If you are using some other version of Fortify SCA, for example some version in the 17.2 series, add e.g.:</p>
 <pre><code>-P:fortify:scaversion=17.2
 </code></pre>
 <p>Including <code>-Ystop-before:jvm</code>, as shown above, makes compilation stop before any actual JVM classfiles are generated. You can also omit it if you want to let compilation finish.</p>
