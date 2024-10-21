@@ -204,7 +204,7 @@ lazy val project2 = project ... (
             &lt;plugin&gt;
                 &lt;groupId&gt;net.alchim31.maven&lt;/groupId&gt;
                 &lt;artifactId&gt;scala-maven-plugin&lt;/artifactId&gt;
-                &lt;version&gt;4.3.0&lt;/version&gt;
+                &lt;version&gt;4.9.2&lt;/version&gt;
                 &lt;executions&gt;
                     &lt;execution&gt;
                         &lt;goals&gt;
@@ -216,7 +216,7 @@ lazy val project2 = project ... (
                 &lt;configuration&gt;
                     &lt;args&gt;
                         &lt;arg&gt;-P:fortify:build=&lt;PROJECT_NAME&gt;&lt;/arg&gt;
-                        &lt;arg&gt;-P:fortify:scaversion=23.1&lt;/arg&gt;
+                        &lt;arg&gt;-P:fortify:scaversion=24.2&lt;/arg&gt;
                     &lt;/args&gt;
                     &lt;compilerPlugins&gt;
                         &lt;compilerPlugin&gt;
@@ -231,6 +231,7 @@ lazy val project2 = project ... (
         &lt;/plugins&gt;
     &lt;/build&gt;
 </code></pre>
+<p>Note that you should make the Scala version number in the <code>compilerPlugin</code> section (for example, <code>scala-fortify_3.5.2</code>) match your <code>scalaVersion</code>.</p>
 <p>As the build progresses, you should notice that the plugin is invoked during the Maven <code>compile</code> goal:</p>
 <pre><code>...
 [INFO] Compiling 365 Scala sources to /&lt;PROJECT_ROOT&gt;/target/classes ...
