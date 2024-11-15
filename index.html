@@ -93,7 +93,7 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <h1><a href="#fortify-sca-for-scala" name="fortify-sca-for-scala" class="anchor"><span class="anchor-link"></span></a>Fortify SCA for Scala</h1>
 <p>Fortify SCA (Static Code Analyzer), by OpenText, finds security issues in source code. For an overview, <a href="https://www.opentext.com/products/fortify-static-code-analyzer">visit opentext.com</a>.</p>
 <p>Fortify supports many programming languages. This page documents its support for Scala in particular.</p>
-<p>Scala support in Fortify is the product of a collaboration between OpenText and Lightbend.</p>
+<p>Scala support in Fortify is the product of a collaboration between two companies, OpenText and Akka.</p>
 <h2><a href="#supported-language-features" name="supported-language-features" class="anchor"><span class="anchor-link"></span></a>Supported language features</h2>
 <p>All of Scala 3 and Scala 2 are supported by the translator.</p>
 <h2><a href="#supported-security-vulnerabilities" name="supported-security-vulnerabilities" class="anchor"><span class="anchor-link"></span></a>Supported security vulnerabilities</h2>
@@ -124,7 +124,7 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
   <li>Scala 2.11.11 or newer</li>
 </ul>
 <p>The latest patch releases are recommended (3.6.1, 3.5.2, 3.4.3, 3.3.4, 2.13.15, 2.12.20, and 2.11.12, as of October 2024).</p>
-<p>To translate Scala code for Fortify to scan, you use the Lightbend compiler plugin, using a license file supplied by OpenText.</p>
+<p>To translate Scala code for Fortify to scan, you use the Akka compiler plugin, using a license file supplied by OpenText.</p>
 <p>To actually scan translated code for vulnerabilities, you must either:</p>
 <ul>
   <li>be a licensed Fortify SCA user. Fortify SCA version 24.2.0 or newer  is recommended for best results</li>
@@ -356,7 +356,7 @@ tasks.withType(ScalaCompile) {
 <p>To submit something to Fortify on Demand, you need to generate a Mobile Build Session (<code>.mbs</code>) file. After translating your Scala code with <code>-P:fortify:build=...</code> enabled, you run <code>sourceanalyzer -b &lt;build-id&gt; -export-build-session &lt;file.mbs&gt;</code> to generate a session file suitable for upload.</p>
 <p>Please see the Fortify on Demand documentation for more information on preparing Scala applications. To access the documentation, <a href="https://ams.fortify.com/Login">log in</a> to Fortify on Demand, select Documentation from the help menu near the top right corner (or follow <a href="https://ams.fortify.com/Docs/en/index.htm">this link</a>), and search for &ldquo;Preparing Scala Application Files&rdquo; (or follow <a href="https://ams.fortify.com/Docs/en/index.htm#Running_Asmnts/Static/StaticPrep/SP_Scala.htm%3FTocPath%3DRunning%2520Assessments%7CStatic%2520Assessments%7CPreparing%2520Static%2520Assessment%2520Files%7C_____15">this link</a> &ndash; the exact URL may be subject to change).</p>
 <h2><a href="#known-issues" name="known-issues" class="anchor"><span class="anchor-link"></span></a>Known issues</h2>
-<p>To report an issue, please contact OpenText support. (Or, if you are a Lightbend subscriber, you may contact Lightbend if you like.)</p>
+<p>To report an issue, please contact OpenText support. (Or, if you are an Akka subscriber, you may contact Akka support if you like.)</p>
 <ul>
   <li>Mixed Scala and Java codebases require separately translating  the Scala and Java sources. Depending on the dependency structure  of the code, not all issues involving both languages may be found.  (issue 180)</li>
   <li>Some pattern matches may produce spurious  &ldquo;Dead Code : Expression is Always false&rdquo; reports. (issue 221)</li>
@@ -496,7 +496,7 @@ tasks.withType(ScalaCompile) {
 </ul>
 <h3><a href="#1-0-2-january-11-2018-" name="1-0-2-january-11-2018-" class="anchor"><span class="anchor-link"></span></a>1.0.2 (January 11, 2018)</h3>
 <ul>
-  <li>the location of the Lightbend license file is now configurable with  <code>-P:fortify:license=...</code> (issue 263)</li>
+  <li>the location of the Akka/Lightbend license file is now configurable with  <code>-P:fortify:license=...</code> (issue 263)</li>
 </ul>
 <h3><a href="#1-0-1-december-20-2017-" name="1-0-1-december-20-2017-" class="anchor"><span class="anchor-link"></span></a>1.0.1 (December 20, 2017)</h3>
 <ul>
