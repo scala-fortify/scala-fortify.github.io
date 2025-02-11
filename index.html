@@ -145,7 +145,7 @@ DO NOT TAMPER WITH THIS FILE - ...
 <p>Translating Scala source code for Fortify is done by a Scala compiler plugin. The plugin is available from Maven Central.</p>
 <p>sbt will retrieve and use the plugin if you add the following to your top-level <code>build.sbt</code>:</p>
 <pre class="prettyprint"><code class="language-scala">addCompilerPlugin(
-  &quot;com.lightbend&quot; % &quot;scala-fortify&quot; % &quot;1.1.4&quot;
+  &quot;com.lightbend&quot; % &quot;scala-fortify&quot; % &quot;1.1.5&quot;
     cross CrossVersion.patch)
 scalacOptions += s&quot;-P:fortify:build=myproject&quot;
 </code></pre>
@@ -222,7 +222,7 @@ lazy val project2 = project ... (
                         &lt;compilerPlugin&gt;
                             &lt;groupId&gt;com.lightbend&lt;/groupId&gt;
                             &lt;artifactId&gt;scala-fortify_3.6.3&lt;/artifactId&gt;
-                            &lt;version&gt;1.1.4&lt;/version&gt;
+                            &lt;version&gt;1.1.5&lt;/version&gt;
                         &lt;/compilerPlugin&gt;
                     &lt;/compilerPlugins&gt;
                 &lt;/configuration&gt;
@@ -235,7 +235,7 @@ lazy val project2 = project ... (
 <p>As the build progresses, you should notice that the plugin is invoked during the Maven <code>compile</code> goal:</p>
 <pre><code>...
 [INFO] Compiling 365 Scala sources to /&lt;PROJECT_ROOT&gt;/target/classes ...
-scala-fortify 1.1.4, licensed to xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx (expires: 2024-09-10T00:00Z[UTC])
+scala-fortify 1.1.5, licensed to xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx (expires: 2024-09-10T00:00Z[UTC])
 scala-fortify: writing translated files to /&lt;USER_HOME&gt;/.fortify/sca24.2/build/&lt;PROJECT_NAME&gt;
 ...
 </code></pre>
@@ -253,7 +253,7 @@ repositories {
 ext {
     scalaBinaryVersion = &#39;3&#39;
     scalaVersion = &#39;3.6.3&#39;
-    fortifyPluginVersion = &#39;1.1.4&#39;
+    fortifyPluginVersion = &#39;1.1.5&#39;
 }
 
 configurations {
@@ -284,7 +284,7 @@ ext {
     playVersion = &#39;2.8.8&#39;
     scalaVersion = &#39;3.6.3&#39;
     scalaBinaryVersion = &#39;3&#39;
-    fortifyPluginVersion = &#39;1.1.4&#39;
+    fortifyPluginVersion = &#39;1.1.5&#39;
 }
 
 model {
@@ -328,10 +328,10 @@ tasks.withType(ScalaCompile) {
 <p>Prerequisite: install your specific desired version of the Scala compiler. All versions, current and past, are available at <a href="https://www.scala-lang.org/download/all.html">link</a>.</p>
 <p>In the following instructions, substitute the actual full Scala 3.x or 2.13.x or 2.12.x or 2.11.x version you are using; we use 3.6.3 as the example version.</p>
 <p>You can download the compiler plugin JAR from Maven Central from the following URL:</p>
-<pre><code>https://repo1.maven.org/maven2/com/lightbend/scala-fortify_3.6.3/1.1.4/scala-fortify_3.6.3-1.1.4.jar
+<pre><code>https://repo1.maven.org/maven2/com/lightbend/scala-fortify_3.6.3/1.1.5/scala-fortify_3.6.3-1.1.5.jar
 </code></pre>
-<p>Then, supposing you have <code>scala-fortify_3.6.3-1.1.4.jar</code> in your current working directory, you can do e.g.:</p>
-<pre><code>scalac -Xplugin:scala-fortify_3.6.3-1.1.4.jar \
+<p>Then, supposing you have <code>scala-fortify_3.6.3-1.1.5.jar</code> in your current working directory, you can do e.g.:</p>
+<pre><code>scalac -Xplugin:scala-fortify_3.6.3-1.1.5.jar \
   -Xplugin-require:fortify \
   -Ystop-before:jvm \
   -P:fortify:build=myproject \
@@ -366,6 +366,11 @@ tasks.withType(ScalaCompile) {
   <li>On Scala 2.11, the <code>-Ydelambdafy</code> flag is not supported and results  in &ldquo;unknown code Function&rdquo; errors. Disable this flag when using the  compiler plugin. (issue 215)</li>
 </ul>
 <h2><a href="#release-notes" name="release-notes" class="anchor"><span class="anchor-link"></span></a>Release notes</h2>
+<h3><a href="#1-1-5-february-11-2025-" name="1-1-5-february-11-2025-" class="anchor"><span class="anchor-link"></span></a>1.1.5 (February 11, 2025)</h3>
+<ul>
+  <li>fix support for custom license file location with Scala 3 (issue 490)</li>
+</ul>
+<p>available for Scala versions: 3.6.{2-3}, 3.5.{0-2}, 3.4.{0-3}, 3.3.{0-5}, 2.13.{8-15}, 2.12.{15-20}, 2.11.{11-12}</p>
 <h3><a href="#1-1-4-october-19-2024-" name="1-1-4-october-19-2024-" class="anchor"><span class="anchor-link"></span></a>1.1.4 (October 19, 2024)</h3>
 <ul>
   <li>support for Scala 3.6</li>
